@@ -1,0 +1,204 @@
+/* --- Estilos Globales y Resets --- */
+* {
+    /* Reset básico */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    /* O la fuente elegida */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    /* Fondo general */
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    /* Clearfix */
+    padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: 1rem;
+    color: #003366;
+    /* Azul oscuro para títulos */
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #0056b3;
+    /* Azul estándar para enlaces */
+}
+
+/* --- Estilos de Layout Comunes --- */
+.main-header {
+    background-color: #003366;
+    /* Azul corporativo */
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav ul li a {
+    color: #fff;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    /* Estilo para el enlace activo */
+    background-color: #0056b3;
+    border-radius: 4px;
+}
+
+.page-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* --- Estilos de Componentes Reutilizables --- */
+.btn {
+    display: inline-block;
+    background-color: #28a745;
+    /* Verde para botones de acción */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #218838;
+    /* Verde más oscuro al pasar el mouse */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Layout responsivo para tarjetas */
+    gap: 1rem;
+}
+
+.card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #0056b3;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* --- Estilos Específicos de Secciones/Páginas --- */
+.explanation,
+.interactive-model,
+.interpretation,
+.team-info,
+.method-links {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.results {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e9ecef;
+    /* Fondo suave para resultados */
+    border-radius: 4px;
+    min-height: 50px;
+    /* Espacio para el texto */
+}
+
+.visualization {
+    margin-top: 1rem;
+    min-height: 200px;
+    /* Espacio para el gráfico */
+    /* Estilos adicionales para el contenedor del gráfico si son necesarios */
+}
+
+/* --- Media Queries para Responsividad (Ejemplo Básico) --- */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+    }
+
+    .main-nav ul {
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav ul li {
+        margin: 5px 0;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        /* Una columna en pantallas pequeñas */
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces de Ecuaciones - FinanzasNuméricas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="page-raices">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">FinanzasNuméricas</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="raices.html" class="active">Raíces</a></li>
+                    <li><a href="sistemas.html">Sistemas</a></li>
+                    <li><a href="integracion.html">Integración</a></li>
+                    <li><a href="edos.html">EDOs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <h1>Raíces de Ecuaciones: Cálculo del TIR</h1>
+
+        <section class="explanation">
+            <h2>Contexto Financiero</h2>
+            <p>La Tasa Interna de Retorno (TIR) es la tasa de descuento que iguala el Valor Presente Neto (VPN) de los
+                flujos de caja de un proyecto a cero. Es una métrica clave para evaluar la rentabilidad de una
+                inversión.</p>
+            <h2>Método Numérico</h2>
+            <p>Usamos métodos como Bisección o Newton-Raphson para encontrar la raíz 'r' de la ecuación VPN(r) = 0, ya
+                que esta ecuación no suele tener solución analítica simple.</p>
+        </section>
+
+        <section class="interactive-model" id="tir-calculator">
+            <h2>Calculadora de TIR (Ejemplo)</h2>
+            <form id="tir-form">
+                <div class="form-group">
+                    <label for="initial-investment">Inversión Inicial (Negativo):</label>
+                    <input type="number" id="initial-investment" required placeholder="-1000">
+                </div>
+                <div class="form-group">
+                    <label for="cash-flows">Flujos de Caja (Separados por comas):</label>
+                    <input type="text" id="cash-flows" required placeholder="300, 400, 500, 400">
+                </div>
+                <button type="submit" class="btn">Calcular TIR</button>
+            </form>
+            <div class="results" id="tir-results">
+                <p>El TIR calculado aparecerá aquí.</p>
+            </div>
+            <div class="visualization" id="tir-chart-container">
+                <canvas id="tir-convergence-chart"></canvas>
+            </div>
+        </section>
+
+        <section class="interpretation">
+            <h2>Interpretación</h2>
+            <p>Un TIR mayor que la tasa de descuento requerida o el costo de capital indica que el proyecto es
+                potencialmente rentable.</p>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Grupo [Nombre del Grupo] - Proyecto de Modelamiento</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
