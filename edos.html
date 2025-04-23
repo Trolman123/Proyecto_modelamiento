@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDOs en Finanzas - FinanzasNuméricas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body id="page-edos">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">FinanzasNuméricas</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="raices.html">Raíces</a></li>
+                    <li><a href="sistemas.html">Sistemas</a></li>
+                    <li><a href="integracion.html">Integración</a></li>
+                    <li><a href="edos.html" class="active">EDOs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <h1>Ecuaciones Diferenciales Ordinarias: Modelando Dinámicas Financieras</h1>
+
+        <section class="explanation">
+            <h2>Contexto Financiero</h2>
+            <p>Las Ecuaciones Diferenciales Ordinarias (EDOs) son fundamentales para modelar cómo cambian las variables
+                financieras a lo largo del tiempo de forma continua. Se usan en modelos de tasas de interés (Vasicek,
+                CIR), dinámicas de precios de activos, y para describir la evolución de la riqueza o el valor de un
+                portafolio.</p>
+            <p>Un ejemplo sencillo es modelar el crecimiento del valor de una inversión <span
+                    class="math-inline">W\(t\)</span> con una tasa de interés <span class="math-inline">r\(t\)</span>
+                que puede variar con el tiempo. La dinámica se describe por la EDO:</p>
+            $$ \frac{dW}{dt} = r(t) W(t) $$
+            <p>con una condición inicial <span class="math-inline">W\(0\) \= W\_0</span>. Si <span
+                    class="math-inline">r\(t\)</span> es constante, la solución es la conocida fórmula de interés
+                compuesto continuo <span class="math-inline">W\(t\) \= W\_0 e^\{rt\}</span>. Pero si <span
+                    class="math-inline">r\(t\)</span> varía, la solución analítica puede ser compleja o no existir.</p>
+
+            <h2>Método Numérico</h2>
+            <p>Cuando una solución analítica no es factible, usamos métodos numéricos para aproximar la solución de la
+                EDO. Partiendo de <span class="math-inline">W\_0</span>, avanzamos en pequeños pasos de tiempo <span
+                    class="math-inline">\\Delta t \= h</span>. Métodos comunes incluyen:</p>
+            <ul>
+                <li><strong>Método de Euler:</strong> El más simple. <span class="math-inline">W\_\{i\+1\} \= W\_i \+ h
+                        \\cdot \[r\(t\_i\) W\_i\]</span>. Es fácil de implementar pero puede ser impreciso.</li>
+                <li><strong>Métodos de Runge-Kutta (ej. RK4):</strong> Más precisos. Usan evaluaciones múltiples de la
+                    pendiente dentro del intervalo <span class="math-inline">\[t\_i, t\_\{i\+1\}\]</span> para mejorar
+                    la aproximación. <span class="math-inline">W\_\{i\+1\} \= W\_i \+ \\frac\{h\}\{6\}\(k\_1 \+ 2k\_2 \+
+                        2k\_3 \+ k\_4\)</span>, donde los <span class="math-inline">k\_j</span> dependen de <span
+                        class="math-inline">r\(t\)W\(t\)</span>.</li>
+            </ul>
+        </section>
+
+        <section class="interactive-model" id="wealth

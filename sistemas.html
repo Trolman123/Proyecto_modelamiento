@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Ecuaciones - FinanzasNuméricas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="page-sistemas">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">FinanzasNuméricas</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="raices.html">Raíces</a></li>
+                    <li><a href="sistemas.html" class="active">Sistemas</a></li>
+                    <li><a href="integracion.html">Integración</a></li>
+                    <li><a href="edos.html">EDOs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <h1>Sistemas de Ecuaciones: Optimización Básica de Portafolios</h1>
+
+        <section class="explanation">
+            <h2>Contexto Financiero</h2>
+            <p>En finanzas, a menudo necesitamos determinar cómo combinar diferentes activos (acciones, bonos, etc.)
+                para formar un portafolio que cumpla ciertos objetivos. Un objetivo simple puede ser alcanzar un
+                rendimiento esperado específico.</p>
+            <p>Si tenemos dos activos con rendimientos esperados $E[R_1]$ y $E[R_2]$, y queremos encontrar las
+                proporciones (pesos) $w_1$ y $w_2$ a invertir en cada uno para obtener un rendimiento esperado del
+                portafolio $E[R_P]$, debemos resolver un sistema de ecuaciones lineales. La restricción fundamental es
+                que la suma de los pesos debe ser 1 (el 100% del capital invertido).</p>
+
+            <h2>Método Numérico</h2>
+            <p>El problema se formula como el siguiente sistema de 2x2:</p>
+            <ol>
+                <li>$w_1 E[R_1] + w_2 E[R_2] = E[R_P]$ (Ecuación de Rendimiento)</li>
+                <li>$w_1 + w_2 = 1$ (Ecuación de Presupuesto)</li>
+            </ol>
+            <p>Este sistema se puede escribir en forma matricial $A \mathbf{w} = \mathbf{b}$:</p>
+            $$
+            \begin{pmatrix} E[R_1] & E[R_2] \\ 1 & 1 \end{pmatrix}
+            \begin{pmatrix} w_1 \\ w_2 \end{pmatrix}
+            =
+            \begin{pmatrix} E[R_P] \\ 1 \end{pmatrix}
+            $$
+            <p>Podemos resolver este sistema para $\mathbf{w} = (w_1, w_2)^T$ usando métodos como la Eliminación
+                Gaussiana, la Regla de Cramer, o calculando la inversa de la matriz $A$ (si existe): $\mathbf{w} =
+                A^{-1} \mathbf{b}$.</p>
+        </section>
+
+        <section class="interactive-model" id="portfolio-allocator">
+            <h2>Calculadora de Pesos (Portafolio de 2 Activos)</h2>
+            <form id="system-form">
+                <div class="form-group">
+                    <label for="return-asset1">Rendimiento Esperado Activo 1 (E[R₁], ej: 0.10 para 10%):</label>
+                    <input type="number" id="return-asset1" required placeholder="0.10" step="0.001">
+                </div>
+                <div class="form-group">
+                    <label for="return-asset2">Rendimiento Esperado Activo 2 (E[R₂], ej: 0.05 para 5%):</label>
+                    <input type="number" id="return-asset2" required placeholder="0.05" step="0.001">
+                </div>
+                <div class="form-group">
+                    <label for="target-return">Rendimiento Esperado del Portafolio (E[Rₚ], ej: 0.08 para 8%):</label>
+                    <input type="number" id="target-return" required placeholder="0.08" step="0.001">
+                </div>
+                <button type="submit" class="btn">Calcular Pesos</button>
+            </form>
+            <div class="results" id="system-results">
+                <p>Los pesos calculados $w_1$ y $w_2$ aparecerán aquí.</p>
+            </div>
+        </section>
+
+        <section class="interpretation">
+            <h2>Interpretación</h2>
+            <p>Los valores $w_1$ y $w_2$ indican la fracción del capital total que se debe invertir en el Activo 1 y el
+                Activo 2, respectivamente, para alcanzar el rendimiento objetivo $E[R_P]$.</p>
+            <ul>
+                <li>Si $w_i > 0$, es una inversión (posición larga).</li>
+                <li>Si $w_i < 0$, implica una venta en corto del activo $i$.</li>
+                <li>Si $w_1 + w_2 \neq 1$, hay un error en el cálculo o el sistema no tiene solución única.</li>
+                <li>**Importante:** Este modelo es muy básico. No considera el riesgo (volatilidad, correlación) de los
+                    activos, que es crucial en la optimización real de portafolios (como en el modelo de Markowitz).
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Grupo [Nombre del Grupo] - Proyecto de Modelamiento</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
