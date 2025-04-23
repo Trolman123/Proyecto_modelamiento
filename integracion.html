@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración Numérica - FinanzasNuméricas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="page-integracion">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">FinanzasNuméricas</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="raices.html">Raíces</a></li>
+                    <li><a href="sistemas.html">Sistemas</a></li>
+                    <li><a href="integracion.html" class="active">Integración</a></li>
+                    <li><a href="edos.html">EDOs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <h1>Integración Numérica: Valoración de Opciones (Ejemplo Simplificado)</h1>
+
+        <section class="explanation">
+            <h2>Contexto Financiero</h2>
+            <p>La valoración de algunos derivados financieros, como las opciones exóticas o cuando se consideran
+                características complejas del mercado, requiere calcular el valor esperado del payoff (beneficio) de la
+                opción bajo una medida de probabilidad neutral al riesgo. Esto a menudo se traduce en calcular una
+                integral definida.</p>
+            <p>Por ejemplo, el precio de una opción de compra europea ($Call$) podría representarse (bajo ciertas
+                simplificaciones y modelos) como la integral del payoff descontado sobre la distribución de probabilidad
+                del precio futuro del activo ($S_T$):
+                $$ Call = e^{-rT} \int_{K}^{\infty} (S_T - K) f(S_T) dS_T $$
+                donde $K$ es el precio de ejercicio, $r$ la tasa libre de riesgo, $T$ el tiempo al vencimiento, y
+                $f(S_T)$ es la función de densidad de probabilidad del precio del activo en $T$.</p>
+
+            <h2>Método Numérico</h2>
+            <p>Cuando la función $f(S_T)$ es compleja o la integral no tiene solución analítica fácil, se recurre a
+                métodos numéricos como la Regla del Trapecio, la Regla de Simpson o métodos de cuadratura Gaussiana para
+                aproximar el valor de la integral.</p>
+        </section>
+
+        <section class="interactive-model" id="option-pricer">
+            <h2>Calculadora Simplificada de Valor de Opción</h2>
+            <p><strong>Nota:</strong> Este es un ejemplo ilustrativo y muy simplificado. La valoración real es más
+                compleja.</p>
+            <form id="integration-form">
+                <div class="form-group">
+                    <label for="strike-price">Precio de Ejercicio (K):</label>
+                    <input type="number" id="strike-price" required placeholder="100" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="risk-free-rate">Tasa Libre de Riesgo (r, anual):</label>
+                    <input type="number" id="risk-free-rate" required placeholder="0.05" step="0.001">
+                </div>
+                <div class="form-group">
+                    <label for="time-to-maturity">Tiempo al Vencimiento (T, años):</label>
+                    <input type="number" id="time-to-maturity" required placeholder="1" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="current-price">Precio Actual del Activo (S0):</label>
+                    <input type="number" id="current-price" required placeholder="105" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="volatility">Volatilidad (σ, anual):</label>
+                    <input type="number" id="volatility" required placeholder="0.20" step="0.001">
+                </div>
+
+                <button type="submit" class="btn">Calcular Valor (Aproximado)</button>
+            </form>
+            <div class="results" id="integration-results">
+                <p>El valor aproximado de la opción aparecerá aquí.</p>
+            </div>
+            <div class="visualization" id="integration-chart-container">
+                <canvas id="payoff-density-chart"></canvas>
+            </div>
+        </section>
+
+        <section class="interpretation">
+            <h2>Interpretación</h2>
+            <p>El valor calculado representa el precio teórico justo de la opción hoy, basado en los parámetros de
+                entrada y el método de integración numérica utilizado para aproximar el valor esperado del payoff futuro
+                descontado.</p>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Grupo [Nombre del Grupo] - Proyecto de Modelamiento</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
