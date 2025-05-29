@@ -73,7 +73,10 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/script.js"></script>
+    <script type="module">
+        import { initTirCalculator } from './js/services/tirService.js';
+        document.addEventListener('DOMContentLoaded', initTirCalculator);
+    </script>
 </body>
 
 </html>
